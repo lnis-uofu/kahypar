@@ -23,7 +23,7 @@ include_directories(SYSTEM ${gtest_SOURCE_DIR}/../googlemock/include ${gtest_SOU
 include_directories(external_tools)
 
 option(KAHYPAR_USE_MINIMAL_BOOST
-  "Download boost automatically and compile required libraries." OFF)
+  "Download boost automatically and compile required libraries." ON)
 
 option(KAHYPAR_USE_GCOV
   "Compile and run tests with gcov for coverage analysis." OFF)
@@ -158,10 +158,10 @@ endif(KAHYPAR_USE_GCOV)
 if(KAHYPAR_USE_MINIMAL_BOOST)
   execute_process(COMMAND cmake -P ${CMAKE_CURRENT_SOURCE_DIR}/scripts/download_boost.cmake)
 
-  include_directories(SYSTEM ${CMAKE_CURRENT_BINARY_DIR}/external_tools/boost/)
+  include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/external_tools/boost/)
 
   # glob boost sources
-  file(GLOB MINI_BOOST_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/external_tools/boost/libs/program_options/src/*.cpp)
+  file(GLOB MINI_BOOST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/external_tools/boost/libs/program_options/src/*.cpp)
 
   add_library(mini_boost STATIC ${MINI_BOOST_SOURCES})
   set_target_properties(mini_boost PROPERTIES LINKER_LANGUAGE CXX)
