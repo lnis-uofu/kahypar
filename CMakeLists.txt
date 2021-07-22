@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
-
 project(KaHyPar CXX C)
+
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 set(PROJECT_VENDOR "Sebastian Schlag")
 set(PROJECT_CONTACT "kahypar@sebastianschlag.de")
 set(PROJECT_URL "http://www.kahypar.org")
